@@ -11,6 +11,11 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
+    "paths": {
+      "ngs-plural": [
+        "./dist/ngs-plural"
+      ]
+    },
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
