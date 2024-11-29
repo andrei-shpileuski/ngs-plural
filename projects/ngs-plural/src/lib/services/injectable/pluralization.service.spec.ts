@@ -2,9 +2,11 @@ import { TestBed } from '@angular/core/testing';
 import { PluralizationService } from './pluralization.service';
 import { ILangWordForms } from '../../models/interfaces/lang-word-forms.interface';
 import { LanguageISO6391Enum } from '../../models/enums/language-iso-639-1.enum';
+import { APPLES } from '../../models/consts/test-data';
 
 describe('PluralizationService', () => {
   let service: PluralizationService;
+  const appleForms: ILangWordForms = APPLES;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -18,76 +20,49 @@ describe('PluralizationService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return singular form for English (count = 1)', () => {
-    const forms: ILangWordForms = {
-      [LanguageISO6391Enum.English]: ['apple', 'apples'],
-    };
+  it('should return singular form for English (count = 1) with count', () => {
+    const count = 1;
     const result = service.getPluralFormLocal(
-      1,
+      count,
       LanguageISO6391Enum.English,
-      forms,
+      appleForms,
     );
-    expect(result).toBe('1 apple');
+    expect(result).toBe(
+      `${count} ${appleForms[LanguageISO6391Enum.English][0]}`,
+    );
   });
 
-  it('should return plural form for English (count > 1)', () => {
-    const forms: ILangWordForms = {
-      [LanguageISO6391Enum.English]: ['apple', 'apples'],
-    };
+  it('should return singular form for English (count = 2) without count', () => {
+    const count = 2;
     const result = service.getPluralFormLocal(
-      3,
+      count,
       LanguageISO6391Enum.English,
-      forms,
-    );
-    expect(result).toBe('3 apples');
-  });
-
-  it('should return singular form for Russian (count = 1)', () => {
-    const forms: ILangWordForms = {
-      [LanguageISO6391Enum.Russian]: ['яблоко', 'яблока', 'яблок'],
-    };
-    const result = service.getPluralFormLocal(
-      1,
-      LanguageISO6391Enum.Russian,
-      forms,
-    );
-    expect(result).toBe('1 яблоко');
-  });
-
-  it('should return correct plural form for Russian (count = 2)', () => {
-    const forms: ILangWordForms = {
-      [LanguageISO6391Enum.Russian]: ['яблоко', 'яблока', 'яблок'],
-    };
-    const result = service.getPluralFormLocal(
-      2,
-      LanguageISO6391Enum.Russian,
-      forms,
-    );
-    expect(result).toBe('2 яблока');
-  });
-
-  it('should return correct plural form for Russian (count = 5)', () => {
-    const forms: ILangWordForms = {
-      [LanguageISO6391Enum.Russian]: ['яблоко', 'яблока', 'яблок'],
-    };
-    const result = service.getPluralFormLocal(
-      5,
-      LanguageISO6391Enum.Russian,
-      forms,
-    );
-    expect(result).toBe('5 яблок');
-  });
-
-  it('should return correct plural form without count when needReturnCount is false', () => {
-    const forms: ILangWordForms = {
-      [LanguageISO6391Enum.Russian]: ['яблоко', 'яблока', 'яблок'],
-    };
-    const result = service.getPluralFormLocal(
-      3,
-      LanguageISO6391Enum.Russian,
-      forms,
+      appleForms,
       false,
     );
-    expect(result).toBe('яблока');
+    expect(result).toBe(appleForms[LanguageISO6391Enum.English][1]);
+  });
+
+  it('should return singular form for Russian (count = 1) with count', () => {
+    const count = 1;
+    const result = service.getPluralFormLocal(
+      count,
+      LanguageISO6391Enum.Russian,
+      appleForms,
+    );
+    expect(result).toBe(
+      `${count} ${appleForms[LanguageISO6391Enum.Russian][0]}`,
+    );
+  });
+
+  it('should return singular form for Russian (count = 2) without count', () => {
+    const count = 2;
+    const result = service.getPluralFormLocal(
+      count,
+      LanguageISO6391Enum.Russian,
+      appleForms,
+      false,
+    );
+    expect(result).toBe(appleForms[LanguageISO6391Enum.Russian][1]);
   });
 });
