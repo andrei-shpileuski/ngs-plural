@@ -3,4 +3,6 @@ export enum LanguageISO6391Enum {
   English = 'en',
   Spanish = 'es',
   French = 'fr',
+  Italian = 'it',
+  German = 'de',
 }
