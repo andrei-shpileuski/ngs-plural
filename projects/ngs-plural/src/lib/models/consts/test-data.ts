@@ -5,4 +5,5 @@ export const APPLES: ILangWordForms = {
   [LanguageISO6391Enum.English]: ['apple', 'apples'],
   [LanguageISO6391Enum.Russian]: ['яблоко', 'яблока', 'яблок'],
   [LanguageISO6391Enum.Spanish]: ['manzana', 'manzanas'],
+  [LanguageISO6391Enum.French]: ['pomme', 'pommes'],
 };

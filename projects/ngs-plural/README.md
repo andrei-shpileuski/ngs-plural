@@ -9,6 +9,7 @@
 - English
 - Russian
 - Spanish
+- French
 - [Add a language](#contributing)
 - [Request a new language via email](mailto:andrei.shpileuski.work@gmail.com)
 
@@ -45,9 +46,11 @@ import { PluralizationLocalPipe } from "ngs-plural";
 })
 export class AppComponent {
   count = 5;
-  wordForms: ILangWordForms = {
+  appleForms: ILangWordForms = {
     en: ["apple", "apples"],
     ru: ["яблоко", "яблока", "яблок"],
+    es: ['manzana', 'manzanas'],
+    fr: ['pomme', 'pommes'],
   };
 }
 ```
@@ -67,9 +70,11 @@ export class AppComponent {
 
   constructor(private pluralizationService: PluralizationService) {
     const count = 3;
-    const wordForms: ILangWordForms = {
+    appleForms: ILangWordForms = {
       en: ["apple", "apples"],
       ru: ["яблоко", "яблока", "яблок"],
+      es: ['manzana', 'manzanas'],
+      fr: ['pomme', 'pommes'],
     };
     this.result = this.pluralizationService.getPluralFormLocal(count, "ru", wordForms);
   }
