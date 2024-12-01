@@ -4,16 +4,21 @@
 
 - **Pipe**: [PluralizationLocalPipe](#pluralizationlocalpipe-example) for seamless pluralization in templates.
 - **Service**: [PluralizationService](#pluralizationservice-example) provides reusable methods for programmatic pluralization.
-- **Multi-language Support**: Currently supports English and Russian.
-- **Customizable**: Easily extendable to include more languages and rules.
+
+### Supported Languages
+- English
+- Russian
+- Spanish
+- [Add a language](#contributing)
+- [Request a new language via email](mailto:andrei.shpileuski.work@gmail.com)
 
 ### Navigation
 
+- [Supported Languages](#supported-languages)
 - [Installation & Usage](#installation--usage)
   - [Pipe](#pluralizationlocalpipe-example)
   - [Service](#pluralizationservice-example)
 - [Contributing](#contributing)
-- [Keywords](#keywords)
 
 ---
 
@@ -96,9 +101,3 @@ npm install
 
 3. Create a new branch for your changes
 4. Submit a pull request with a detailed description of the changes
-
----
-
-## Keywords
-
-angular, pluralization, internationalization, i18n, localization, language support, multi-language, ng, ngs-plural, plural
