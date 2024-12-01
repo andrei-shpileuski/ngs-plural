@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="demo">
+    <div class="card">
+      <h1>ngx-plural demo</h1>
+      <div class="form-group">
+        <label for="language-select">Choose Language:</label>
+        <select
+          id="language-select"
+          [formControl]="languageControl"
+          class="input"
+        >
+          @for (lang of availableLanguages; track $index) {
+            <option [value]="lang">
+              {{ lang }}
+            </option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="count-input">Enter Count:</label>
+        <input
+          id="count-input"
+          type="number"
+          [formControl]="countControl"
+          class="input"
+        />
+      </div>
+      <div class="result">
+        <p>
+          <strong>Result:</strong>
+        </p>
+        <div class="result-item">
+          <span>PluralizationLocalPipe:</span>
+          <span>
+            {{
+              countControl.value!
+                | pluralizationLocal: languageControl.value! : appleForms
+            }}
+          </span>
+        </div>
+        <div class="result-item">
+          <span>resultObservable$:</span>
+          <span>{{ resultObservable$ | async }}</span>
+        </div>
+        <div class="result-item">
+          <span>resultSignal:</span>
+          <span>{{ resultSignal() }}</span>
+        </div>
+        <div class="result-item">
+          <span>resultStatic:</span>
+          <div>
+            <button (click)="updateResultStatic()" class="btn">
+              updateResultStatic
+            </button>
+            <span>{{ resultStatic }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="code">
+    <pre><code>{{ tsCode }}</code></pre>
+  </div>
+</div>

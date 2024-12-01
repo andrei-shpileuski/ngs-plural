@@ -1,18 +1,4 @@
-import { Component, computed, inject, OnInit, Signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { PluralizationLocalPipe } from '../../../ngs-plural/src/lib/pipes/pluralization-local.pipe';
-import { APPLES } from '../../../ngs-plural/src/lib/models/consts/test-data';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ILangWordForms } from '../../../ngs-plural/src/lib/models/interfaces/lang-word-forms.interface';
-import { AVAILABLE_LANGUAGES } from '../../../ngs-plural/src/lib/models/consts/available-languages.const';
-import { LanguageISO6391Enum } from '../../../ngs-plural/src/lib/models/enums/language-iso-639-1.enum';
-import { LanguageISO6391Type } from '../../../ngs-plural/src/lib/models/types/language-iso-639-1.type';
-import { combineLatest, map, Observable, startWith } from 'rxjs';
-import { PluralizationService } from '../../../ngs-plural/src/lib/services/injectable/pluralization.service';
-import { AsyncPipe } from '@angular/common';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { tsCode } from './models/consts/ts-code.const';
-
+export const tsCode = `
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -54,6 +40,13 @@ export class AppComponent implements OnInit {
   // Cases
   //// Static
   resultStatic: string = '';
+    updateResultStatic(): void {
+    this.resultStatic = this.pluralizationService.getPluralFormLocal(
+      this.countControl.value!,
+      this.languageControl.value!,
+      APPLES,
+    );
+  }
 
   //// Observable
   resultObservable$: Observable<string> = combineLatest([
@@ -77,14 +70,5 @@ export class AppComponent implements OnInit {
       APPLES,
     );
   });
-
-  //--------------------------------------------------------
-
-  updateResultStatic(): void {
-    this.resultStatic = this.pluralizationService.getPluralFormLocal(
-      this.countControl.value!,
-      this.languageControl.value!,
-      APPLES,
-    );
-  }
 }
+`.trim();

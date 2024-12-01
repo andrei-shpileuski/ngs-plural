@@ -16,7 +16,7 @@ export class PluralizationService {
   ): string {
     const ruleService =
       LANG_RULES_MAP[lang] || LANG_RULES_MAP[LanguageISO6391Enum.English];
-    const form = ruleService.applyRules(count, forms[lang]);
+    const form = ruleService.applyRules(Math.abs(count), forms[lang]);
 
     return needReturnCount ? `${count} ${form}` : `${form}`;
   }

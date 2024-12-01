@@ -40,7 +40,7 @@ import { PluralizationLocalPipe } from "ngs-plural";
 
 @Component({
   selector: "app-root",
-  template: ` <p>{{ count | pluralizationLocal: "en" : wordForms }}</p> `,
+  template: ` <p>{{ count | pluralizationLocal: "en" : appleForms }}</p> `,
   standalone: true,
   imports: [PluralizationLocalPipe],
 })
@@ -76,7 +76,7 @@ export class AppComponent {
       es: ['manzana', 'manzanas'],
       fr: ['pomme', 'pommes'],
     };
-    this.result = this.pluralizationService.getPluralFormLocal(count, "ru", wordForms);
+    this.result = this.pluralizationService.getPluralFormLocal(count, "ru", appleForms);
   }
 }
 ```
