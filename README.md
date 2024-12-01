@@ -5,11 +5,15 @@
 - **Pipe**: [PluralizationLocalPipe](#pluralizationlocalpipe-example) for seamless pluralization in templates.
 - **Service**: [PluralizationService](#pluralizationservice-example) provides reusable methods for programmatic pluralization.
 
+[Showcase demo page - HERE](https://ngs-plural.onrender.com)
+
 ### Supported Languages
 - English
 - Russian
 - Spanish
 - French
+- Italian
+- German
 - [Add a language](#contributing)
 - [Request a new language via email](mailto:andrei.shpileuski.work@gmail.com)
 
@@ -31,7 +35,7 @@ Install `ngs-plural` via npm:
 npm install ngs-plural
 ```
 
-### PluralizationLocalPipe example:
+### PluralizationLocalPipe usage example:
 
 ```typescript
 import { Component } from "@angular/core";
@@ -55,7 +59,7 @@ export class AppComponent {
 }
 ```
 
-### PluralizationService example:
+### PluralizationService usage example:
 
 ```typescript
 import { Component } from "@angular/core";
@@ -80,6 +84,8 @@ export class AppComponent {
   }
 }
 ```
+
+[More cases here](https://ngs-plural.onrender.com)
 
 ---
 

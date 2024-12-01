@@ -1,7 +1,9 @@
 import {
+  IWordFormsDe,
   IWordFormsEn,
   IWordFormsEs,
   IWordFormsFr,
+  IWordFormsIt,
   IWordFormsRu,
 } from '../types/word-forms';
 
@@ -10,4 +12,6 @@ export interface ILangWordForms {
   en?: IWordFormsEn;
   es?: IWordFormsEs;
   fr?: IWordFormsFr;
+  de?: IWordFormsDe;
+  it?: IWordFormsIt;
 }
