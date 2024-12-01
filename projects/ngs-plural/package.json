@@ -1,6 +1,6 @@
 {
   "name": "ngs-plural",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Angular library for handling pluralization in different languages.",
   "keywords": [
     "angular",

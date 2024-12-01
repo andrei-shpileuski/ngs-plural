@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { PluralizationService } from '../services/injectable/pluralization.service';
-import { LanguageISO6391Type } from '../models/types/language-iso-639-1';
+import { LanguageISO6391Type } from '../models/types/language-iso-639-1.type';
 import { ILangWordForms } from '../models/interfaces/lang-word-forms.interface';
 
 @Pipe({
