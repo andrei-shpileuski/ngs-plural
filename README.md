@@ -1,27 +1,104 @@
-# NgsPlural
+# ngs-plural
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+`ngs-plural` is a lightweight Angular library for handling pluralization in different languages using a pipe and a service. It simplifies the process of generating grammatically correct plural forms based on a numeric count and supports custom language rules.
 
-## Development server
+- **Pipe**: [PluralizationLocalPipe](#pluralizationlocalpipe-example) for seamless pluralization in templates.
+- **Service**: [PluralizationService](#pluralizationservice-example) provides reusable methods for programmatic pluralization.
+- **Multi-language Support**: Currently supports English and Russian.
+- **Customizable**: Easily extendable to include more languages and rules.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Navigation
 
-## Code scaffolding
+- [Installation & Usage](#installation--usage)
+  - [Pipe](#pluralizationlocalpipe-example)
+  - [Service](#pluralizationservice-example)
+- [Contributing](#contributing)
+- [Keywords](#keywords)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## Installation & Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Install `ngs-plural` via npm:
 
-## Running unit tests
+```bash
+npm install ngs-plural
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### PluralizationLocalPipe example:
 
-## Running end-to-end tests
+```typescript
+import { Component } from "@angular/core";
+import { ILangWordForms } from "ngs-plural";
+import { PluralizationLocalPipe } from "ngs-plural";
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+@Component({
+  selector: "app-root",
+  template: ` <p>{{ count | pluralizationLocal: "en" : wordForms }}</p> `,
+  standalone: true,
+  imports: [PluralizationLocalPipe],
+})
+export class AppComponent {
+  count = 5;
+  wordForms: ILangWordForms = {
+    en: ["apple", "apples"],
+    ru: ["яблоко", "яблока", "яблок"],
+  };
+}
+```
 
-## Further help
+### PluralizationService example:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```typescript
+import { Component } from "@angular/core";
+import { PluralizationService, ILangWordForms } from "ngs-plural";
+
+@Component({
+  selector: "app-root",
+  template: `<p>{{ result }}</p>`,
+})
+export class AppComponent {
+  result: string;
+
+  constructor(private pluralizationService: PluralizationService) {
+    const count = 3;
+    const wordForms: ILangWordForms = {
+      en: ["apple", "apples"],
+      ru: ["яблоко", "яблока", "яблок"],
+    };
+    this.result = this.pluralizationService.getPluralFormLocal(count, "ru", wordForms);
+  }
+}
+```
+
+---
+
+## Contributing
+
+To contribute or use the library in development mode, you can clone the repository and install dependencies.
+
+### Steps to contribute:
+
+1. Fork the repository
+2. Clone the repo, install dependencies
+
+```bash
+git clone https://github.com/andrei-shpileuski/ngx-plural.git
+```
+
+```bash
+cd ngx-plural
+```
+
+```bash
+npm install
+```
+
+3. Create a new branch for your changes
+4. Submit a pull request with a detailed description of the changes
+
+---
+
+## Keywords
+
+angular, pluralization, internationalization, i18n, localization, language support, multi-language, ng, ngs-plural, plural
