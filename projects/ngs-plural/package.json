@@ -1,6 +1,6 @@
 {
   "name": "ngs-plural",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Angular library for handling pluralization in different languages.",
   "keywords": [
     "angular",
@@ -19,7 +19,17 @@
     "Spanish",
     "French",
     "Italian",
-    "German"
+    "German",
+    "Portuguese",
+    "Dutch",
+    "Swedish",
+    "Norwegian",
+    "Danish",
+    "Romanian",
+    "Catalan",
+    "Hungarian",
+    "Finnish",
+    "Turkish"
   ],
   "peerDependencies": {
     "@angular/common": "^18.2.0",

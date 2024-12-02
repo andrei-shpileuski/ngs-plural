@@ -14,6 +14,16 @@
 - French
 - Italian
 - German
+- Portuguese
+- Dutch
+- Swedish
+- Norwegian
+- Danish
+- Romanian
+- Catalan
+- Hungarian
+- Finnish
+- Turkish
 - [Add a language](#contributing)
 - [Request a new language via email](mailto:andrei.shpileuski.work@gmail.com)
 

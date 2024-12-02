@@ -10,3 +10,13 @@ export class LangItRuleService extends RuleDefaultService {}
 export class LangEsRuleService extends RuleDefaultService {}
 export class LangDeRuleService extends RuleDefaultService {}
 export class LangFrRuleService extends RuleDefaultService {}
+export class LangPtRuleService extends RuleDefaultService {}
+export class LangNlRuleService extends RuleDefaultService {}
+export class LangSvRuleService extends RuleDefaultService {}
+export class LangNoRuleService extends RuleDefaultService {}
+export class LangDaRuleService extends RuleDefaultService {}
+export class LangRoRuleService extends RuleDefaultService {}
+export class LangCaRuleService extends RuleDefaultService {}
+export class LangHuRuleService extends RuleDefaultService {}
+export class LangFiRuleService extends RuleDefaultService {}
+export class LangTrRuleService extends RuleDefaultService {}

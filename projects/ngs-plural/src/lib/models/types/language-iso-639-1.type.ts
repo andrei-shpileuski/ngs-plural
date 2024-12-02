@@ -1,1 +1,17 @@
-export type LanguageISO6391Type = 'ru' | 'en' | 'es' | 'fr' | 'de' | 'it';
+export type LanguageISO6391Type =
+  | 'ru'
+  | 'en'
+  | 'es'
+  | 'fr'
+  | 'de'
+  | 'it'
+  | 'pt'
+  | 'nl'
+  | 'sv'
+  | 'no'
+  | 'da'
+  | 'ro'
+  | 'ca'
+  | 'hu'
+  | 'fi'
+  | 'tr';

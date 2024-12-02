@@ -7,4 +7,14 @@ export interface ILangWordForms {
   fr?: IWordFormsDefault;
   de?: IWordFormsDefault;
   it?: IWordFormsDefault;
+  pt?: IWordFormsDefault;
+  nl?: IWordFormsDefault;
+  sv?: IWordFormsDefault;
+  no?: IWordFormsDefault;
+  da?: IWordFormsDefault;
+  ro?: IWordFormsDefault;
+  ca?: IWordFormsDefault;
+  hu?: IWordFormsDefault;
+  fi?: IWordFormsDefault;
+  tr?: IWordFormsDefault;
 }
