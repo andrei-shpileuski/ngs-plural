@@ -2,22 +2,31 @@ import { LanguageISO6391Type } from '../types/language-iso-639-1.type';
 import { ILangRulesService } from '../interfaces/lang-rules-service.interface';
 import { LanguageISO6391Enum } from '../enums/language-iso-639-1.enum';
 import {
+  LangBeRuleService,
+  LangBgRuleService,
   LangCaRuleService,
+  LangCsRuleService,
   LangDaRuleService,
   LangDeRuleService,
   LangEnRuleService,
   LangEsRuleService,
   LangFiRuleService,
   LangFrRuleService,
+  LangHrRuleService,
   LangHuRuleService,
   LangItRuleService,
+  LangMkRuleService,
   LangNlRuleService,
   LangNoRuleService,
   LangPtRuleService,
   LangRoRuleService,
   LangRuRuleService,
+  LangSkRuleService,
+  LangSlRuleService,
+  LangSrRuleService,
   LangSvRuleService,
   LangTrRuleService,
+  LangUkRuleService,
 } from '../../services/langs/langs-rules.service';
 
 export const LANG_RULES_MAP: Record<LanguageISO6391Type, ILangRulesService> = {
@@ -37,4 +46,13 @@ export const LANG_RULES_MAP: Record<LanguageISO6391Type, ILangRulesService> = {
   [LanguageISO6391Enum.Hungarian]: new LangHuRuleService(),
   [LanguageISO6391Enum.Finnish]: new LangFiRuleService(),
   [LanguageISO6391Enum.Turkish]: new LangTrRuleService(),
+  [LanguageISO6391Enum.Ukrainian]: new LangUkRuleService(),
+  [LanguageISO6391Enum.Belarusian]: new LangBeRuleService(),
+  [LanguageISO6391Enum.Serbian]: new LangSrRuleService(),
+  [LanguageISO6391Enum.Croatian]: new LangHrRuleService(),
+  [LanguageISO6391Enum.Bulgarian]: new LangBgRuleService(),
+  [LanguageISO6391Enum.Czech]: new LangCsRuleService(),
+  [LanguageISO6391Enum.Slovak]: new LangSkRuleService(),
+  [LanguageISO6391Enum.Slovene]: new LangSlRuleService(),
+  [LanguageISO6391Enum.Macedonian]: new LangMkRuleService(),
 };

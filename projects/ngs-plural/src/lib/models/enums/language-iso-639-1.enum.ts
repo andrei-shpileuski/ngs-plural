@@ -15,4 +15,13 @@ export enum LanguageISO6391Enum {
   Hungarian = 'hu',
   Finnish = 'fi',
   Turkish = 'tr',
+  Ukrainian = 'uk',
+  Belarusian = 'be',
+  Serbian = 'sr',
+  Croatian = 'hr',
+  Bulgarian = 'bg',
+  Czech = 'cs',
+  Slovak = 'sk',
+  Slovene = 'sl',
+  Macedonian = 'mk',
 }

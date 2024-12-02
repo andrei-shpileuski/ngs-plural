@@ -14,4 +14,13 @@ export type LanguageISO6391Type =
   | 'ca'
   | 'hu'
   | 'fi'
-  | 'tr';
+  | 'tr'
+  | 'uk'
+  | 'be'
+  | 'sr'
+  | 'hr'
+  | 'bg'
+  | 'cs'
+  | 'sk'
+  | 'sl'
+  | 'mk';

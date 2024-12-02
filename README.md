@@ -24,6 +24,15 @@
 - Hungarian
 - Finnish
 - Turkish
+- Ukrainian
+- Belarusian
+- Serbian
+- Croatian
+- Bulgarian
+- Czech
+- Slovak
+- Slovene
+- Macedonian
 - [Add a language](#contributing)
 - [Request a new language via email](mailto:andrei.shpileuski.work@gmail.com)
 

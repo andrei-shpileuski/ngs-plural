@@ -18,4 +18,13 @@ export const APPLES: ILangWordForms = {
   [LanguageISO6391Enum.Hungarian]: ['alma', 'almák'],
   [LanguageISO6391Enum.Finnish]: ['omena', 'omenat'],
   [LanguageISO6391Enum.Turkish]: ['elma', 'elmalar'],
+  [LanguageISO6391Enum.Ukrainian]: ['яблуко', 'яблука', 'яблук'],
+  [LanguageISO6391Enum.Belarusian]: ['яблык', 'яблыкі', 'яблыкаў'],
+  [LanguageISO6391Enum.Serbian]: ['јабука', 'јабуке', 'јабука'],
+  [LanguageISO6391Enum.Croatian]: ['jabuka', 'jabuke', 'jabuka'],
+  [LanguageISO6391Enum.Bulgarian]: ['ябълка', 'ябълки', 'ябълки'],
+  [LanguageISO6391Enum.Czech]: ['jablko', 'jablka', 'jablek'],
+  [LanguageISO6391Enum.Slovak]: ['jablko', 'jablká', 'jabĺk'],
+  [LanguageISO6391Enum.Slovene]: ['jabolko', 'jabolka', 'jabolk'],
+  [LanguageISO6391Enum.Macedonian]: ['јаболко', 'јаболка', 'јаболка'],
 };

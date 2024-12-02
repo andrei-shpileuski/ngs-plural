@@ -17,4 +17,13 @@ export interface ILangWordForms {
   hu?: IWordFormsDefault;
   fi?: IWordFormsDefault;
   tr?: IWordFormsDefault;
+  uk?: IWordFormsSlavic;
+  be?: IWordFormsSlavic;
+  sr?: IWordFormsSlavic;
+  hr?: IWordFormsSlavic;
+  bg?: IWordFormsSlavic;
+  cs?: IWordFormsSlavic;
+  sk?: IWordFormsSlavic;
+  sl?: IWordFormsSlavic;
+  mk?: IWordFormsSlavic;
 }

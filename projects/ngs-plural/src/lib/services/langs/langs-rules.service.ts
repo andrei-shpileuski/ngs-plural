@@ -20,3 +20,12 @@ export class LangCaRuleService extends RuleDefaultService {}
 export class LangHuRuleService extends RuleDefaultService {}
 export class LangFiRuleService extends RuleDefaultService {}
 export class LangTrRuleService extends RuleDefaultService {}
+export class LangUkRuleService extends RuleSlavicService {}
+export class LangBeRuleService extends RuleSlavicService {}
+export class LangSrRuleService extends RuleSlavicService {}
+export class LangHrRuleService extends RuleSlavicService {}
+export class LangBgRuleService extends RuleSlavicService {}
+export class LangCsRuleService extends RuleSlavicService {}
+export class LangSkRuleService extends RuleSlavicService {}
+export class LangSlRuleService extends RuleSlavicService {}
+export class LangMkRuleService extends RuleSlavicService {}
