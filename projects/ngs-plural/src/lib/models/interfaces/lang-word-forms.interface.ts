@@ -1,17 +1,10 @@
-import {
-  IWordFormsDe,
-  IWordFormsEn,
-  IWordFormsEs,
-  IWordFormsFr,
-  IWordFormsIt,
-  IWordFormsRu,
-} from '../types/word-forms';
+import { IWordFormsDefault, IWordFormsSlavic } from '../types/word-forms';
 
 export interface ILangWordForms {
-  ru?: IWordFormsRu;
-  en?: IWordFormsEn;
-  es?: IWordFormsEs;
-  fr?: IWordFormsFr;
-  de?: IWordFormsDe;
-  it?: IWordFormsIt;
+  ru?: IWordFormsSlavic;
+  en?: IWordFormsDefault;
+  es?: IWordFormsDefault;
+  fr?: IWordFormsDefault;
+  de?: IWordFormsDefault;
+  it?: IWordFormsDefault;
 }
