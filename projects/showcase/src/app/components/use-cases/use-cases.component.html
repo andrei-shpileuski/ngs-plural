@@ -120,7 +120,7 @@
         >// output:
         <b>
           {{
-            count() | plural: { lang: lang(), forms: langWordForms() } : false
+            count() | plural: { lang: lang(), forms: {'en': ['apple', 'apples']} } : false
           }}</b
         ></span
       >
