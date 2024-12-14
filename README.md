@@ -133,11 +133,11 @@ To contribute or use the library in development mode, you can clone the reposito
 2. Clone the repo, install dependencies
 
 ```bash
-git clone https://github.com/andrei-shpileuski/ngx-plural.git
+git clone https://github.com/andrei-shpileuski/ngs-plural.git
 ```
 
 ```bash
-cd ngx-plural
+cd ngs-plural
 ```
 
 ```bash
