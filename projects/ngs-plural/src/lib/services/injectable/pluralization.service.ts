@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ILangWordForms } from '../../models/interfaces/lang-word-forms.interface';
-import { LanguageISO6391Type } from '../../models/types/language-iso-639-1.type';
 import { LanguageISO6391Enum } from '../../models/enums/language-iso-639-1.enum';
 import { LANG_RULES_MAP } from '../../models/consts/lang-rules-map.const';
+import { IPluralOptions } from '../../models/interfaces/options.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -10,15 +9,35 @@ import { LANG_RULES_MAP } from '../../models/consts/lang-rules-map.const';
 export class PluralizationService {
   public getPluralFormLocal(
     count: number,
-    lang: LanguageISO6391Type,
-    forms: ILangWordForms,
+    pluralOptions: IPluralOptions,
     needReturnCount: boolean = true,
   ): string {
-    if (!forms[lang]) return '';
+    if (!pluralOptions.forms) return '';
+    if (!pluralOptions.lang) pluralOptions.lang = LanguageISO6391Enum.English;
 
     const ruleService =
-      LANG_RULES_MAP[lang] || LANG_RULES_MAP[LanguageISO6391Enum.English];
-    const form = ruleService.applyRule(Math.abs(count), forms[lang]);
+      LANG_RULES_MAP[pluralOptions.lang] ||
+      LANG_RULES_MAP[LanguageISO6391Enum.English];
+
+    let form: string;
+
+    if (Array.isArray(pluralOptions.forms)) {
+      if (!pluralOptions.forms.length) return '';
+
+      form = ruleService.applyRule(
+        Math.abs(count),
+        Array.isArray(pluralOptions.forms)
+          ? pluralOptions.forms
+          : pluralOptions.forms[pluralOptions.lang],
+      );
+    } else {
+      if (!pluralOptions.forms[pluralOptions.lang]) return '';
+
+      form = ruleService.applyRule(
+        Math.abs(count),
+        pluralOptions.forms[pluralOptions.lang]!,
+      );
+    }
 
     return needReturnCount ? `${count} ${form}` : `${form}`;
   }

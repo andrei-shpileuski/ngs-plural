@@ -1,7 +1,7 @@
 <div class="container">
   <div class="demo">
     <div class="card">
-      <h1>ngx-plural demo</h1>
+      <h1>ngs-plural demo</h1>
       <div class="form-group">
         <label for="language-select">Choose Language:</label>
         <select
@@ -25,40 +25,15 @@
           class="input"
         />
       </div>
-      <div class="result">
-        <p>
-          <strong>Result:</strong>
-        </p>
-        <div class="result-item">
-          <span>PluralizationLocalPipe:</span>
-          <span>
-            {{
-              countControl.value!
-                | pluralizationLocal: languageControl.value! : appleForms
-            }}
-          </span>
-        </div>
-        <div class="result-item">
-          <span>resultObservable$:</span>
-          <span>{{ resultObservable$ | async }}</span>
-        </div>
-        <div class="result-item">
-          <span>resultSignal:</span>
-          <span>{{ resultSignal() }}</span>
-        </div>
-        <div class="result-item">
-          <span>resultStatic:</span>
-          <div>
-            <button (click)="updateResultStatic()" class="btn">
-              updateResultStatic
-            </button>
-            <span>{{ resultStatic }}</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
-  <div class="code">
-    <pre><code>{{ tsCode }}</code></pre>
+
+  <div class="use-cases">
+    <app-use-cases
+      [count]="count()!"
+      [lang]="language()!"
+      [langWordForms]="appleForms"
+      [instant]="'APPLES'"
+    ></app-use-cases>
   </div>
 </div>

@@ -1,0 +1,24 @@
+.title {
+}
+
+h2,
+h3 {
+  margin: 12px 0;
+}
+
+h1,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.case {
+  display: flex;
+  flex-direction: column;
+}
+
+.subcase {
+  display: flex;
+  flex-direction: column;
+}

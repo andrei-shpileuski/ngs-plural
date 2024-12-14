@@ -1,17 +1,17 @@
 import { TestBed } from '@angular/core/testing';
-import { PluralizationLocalPipe } from './pluralization-local.pipe';
+import { PluralPipe } from './plural.pipe';
 import { PluralizationService } from '../services/injectable/pluralization.service';
 
-describe('PluralizationLocalPipe', () => {
-  let pipe: PluralizationLocalPipe;
+describe('PluralPipe', () => {
+  let pipe: PluralPipe;
   let pluralizationService: PluralizationService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PluralizationLocalPipe, PluralizationService],
+      providers: [PluralPipe, PluralizationService],
     });
 
-    pipe = TestBed.inject(PluralizationLocalPipe);
+    pipe = TestBed.inject(PluralPipe);
     pluralizationService = TestBed.inject(PluralizationService);
   });
 

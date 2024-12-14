@@ -2,46 +2,28 @@
 
 `ngs-plural` is a lightweight Angular library for handling pluralization in different languages using a pipe and a service. It simplifies the process of generating grammatically correct plural forms based on a numeric count and supports custom language rules.
 
-- **Pipe**: [PluralizationLocalPipe](#pluralizationlocalpipe-example) for seamless pluralization in templates.
-- **Service**: [PluralizationService](#pluralizationservice-example) provides reusable methods for programmatic pluralization.
+### Features
+
+- **[TranslatePluralPipe](#--translatepluralpipe-depends-on-ngx-translate)**: pluralization via JSON translation (depends on @ngx-translate/core).
+- **[PluralPipe](#--pluralpipe)**: direct word forms for pluralization.
+- **[PluralizationService](#--pluralizationservice)**: flexible pluralization with data flow.
 
 [Showcase demo page - HERE](https://ngs-plural.onrender.com)
 
-### Supported Languages
-- English
-- Russian
-- Spanish
-- French 
-- Italian
-- German
-- Portuguese
-- Dutch
-- Swedish
-- Norwegian
-- Danish
-- Romanian
-- Catalan
-- Hungarian
-- Finnish
-- Turkish
-- Ukrainian
-- Belarusian
-- Serbian
-- Croatian
-- Bulgarian
-- Czech
-- Slovak
-- Slovene
-- Macedonian
-- [Add a language](#contributing)
-- [Request a new language via email](mailto:andrei.shpileuski.work@gmail.com)
+### Supported Languages (rules)
+
+English, Russian, Spanish, French, Italian, German, Portuguese, Dutch, Swedish, Norwegian, Danish, Romanian, Catalan, Hungarian, Finnish, Turkish, Ukrainian, Belarusian, Serbian, Croatian, Bulgarian, Czech, Slovak, Slovene, Macedonian.
+
+[+ Add a language](#contributing)  
+[+ Request a new language via email](mailto:andrei.shpileuski.work@gmail.com)
 
 ### Navigation
 
-- [Supported Languages](#supported-languages)
+- [Supported Languages](#supported-languages-rules)
 - [Installation & Usage](#installation--usage)
-  - [Pipe](#pluralizationlocalpipe-example)
-  - [Service](#pluralizationservice-example)
+  - [TranslatePluralPipe](#--translatepluralpipe-depends-on-ngx-translate)
+  - [PluralPipe](#--pluralpipe)
+  - [PluralizationService](#--pluralizationservice)
 - [Contributing](#contributing)
 
 ---
@@ -54,53 +36,86 @@ Install `ngs-plural` via npm:
 npm install ngs-plural
 ```
 
-### PluralizationLocalPipe usage example:
+### - TranslatePluralPipe (\*depends on ngx-translate)
 
-```typescript
-import { Component } from "@angular/core";
-import { ILangWordForms } from "ngs-plural";
-import { PluralizationLocalPipe } from "ngs-plural";
+JSON ({{lang}}.json):
 
-@Component({
-  selector: "app-root",
-  template: ` <p>{{ count | pluralizationLocal: "en" : appleForms }}</p> `,
-  standalone: true,
-  imports: [PluralizationLocalPipe],
-})
-export class AppComponent {
-  count = 5;
-  appleForms: ILangWordForms = {
-    en: ["apple", "apples"],
-    ru: ["яблоко", "яблока", "яблок"],
-    es: ['manzana', 'manzanas'],
-    fr: ['pomme', 'pommes'],
-  };
-}
+```json
+{ "APPLES": ["apple", "apples"] }
 ```
 
-### PluralizationService usage example:
+HTML:
+
+```
+{{ 0 | translatePlural: { lang: 'en', instant: 'APPLES' } }}
+// output: 0 apples
+
+{{ 0 | translatePlural: { lang: 'en', instant: 'APPLES' } : false }}
+// output: apples
+
+{{ 0 | translatePlural: { instant: 'APPLES' } }}
+// output: 0 apples (used 'currentLanguage' from TranslateService)
+
+{{ 0 | translatePlural: { instant: 'APPLES' } : false }}
+// output: apples (used 'currentLanguage' from TranslateService)
+```
+
+### - PluralPipe
+
+TypeScript:
 
 ```typescript
-import { Component } from "@angular/core";
-import { PluralizationService, ILangWordForms } from "ngs-plural";
+const appleWordForms = {
+  en: ["apple", "apples"],
+  ru: ["яблоко", "яблока", "яблок"],
+  //...
+};
+```
 
-@Component({
-  selector: "app-root",
-  template: `<p>{{ result }}</p>`,
-})
-export class AppComponent {
-  result: string;
+HTML:
 
-  constructor(private pluralizationService: PluralizationService) {
-    const count = 3;
-    appleForms: ILangWordForms = {
-      en: ["apple", "apples"],
-      ru: ["яблоко", "яблока", "яблок"],
-      es: ['manzana', 'manzanas'],
-      fr: ['pomme', 'pommes'],
-    };
-    this.result = this.pluralizationService.getPluralFormLocal(count, "ru", appleForms);
-  }
+```
+{{ 0 | plural: { lang: 'en', forms: appleWordForms } }}
+// output: 0 apples
+
+{{ 0 | plural: { lang: 'en', forms: appleWordForms } : false }}
+// output: apples
+
+{{ 0 | plural: { lang: 'en', forms: [ "apple", "apples" ] } }}
+// output: 0 apples
+
+{{ 0 | plural: { lang: 'en', forms: [ "apple", "apples" ] } : false }}
+// output: apples
+
+{{ 0 | plural: { forms: appleWordForms } }}
+// output: 0 apples (used 'en' by default)
+
+{{ 0 | plural: { forms: appleWordForms } : false }}
+// output: apples (used 'en' by default)
+```
+
+### - PluralizationService
+
+TypeScript:
+
+```typescript
+export class SomeComponent {
+  pluralizationService = inject(PluralizationService);
+
+  //// Static
+  resultStatic = this.pluralizationService.getPluralFormLocal(1, "en", APPLES, true);
+
+  //// Observable
+  resultObservable$: Observable<string> = combineLatest([this.language$, this.count$]).pipe(
+    map(([lang, count]) => {
+      return this.pluralizationService.getPluralFormLocal(count, lang, APPLES, true);
+    }),
+  );
+
+  //// Signal
+  resultSignal: Signal<string> = computed(() => {
+    return this.pluralizationService.getPluralFormLocal(this.count(), this.language(), APPLES, true);
+  });
 }
 ```
 

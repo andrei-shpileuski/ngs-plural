@@ -22,13 +22,12 @@ describe('PluralizationService', () => {
 
   it('should return singular form for English (count = 1) with count', () => {
     const count = 1;
-    const result = service.getPluralFormLocal(
-      count,
-      LanguageISO6391Enum.English,
-      appleForms,
-    );
+    const result = service.getPluralFormLocal(count, {
+      lang: LanguageISO6391Enum.English,
+      forms: appleForms,
+    });
     expect(result).toBe(
-      `${count} ${appleForms[LanguageISO6391Enum.English][0]}`,
+      `${count} ${appleForms[LanguageISO6391Enum.English]![0]}`,
     );
   });
 
@@ -36,22 +35,23 @@ describe('PluralizationService', () => {
     const count = 2;
     const result = service.getPluralFormLocal(
       count,
-      LanguageISO6391Enum.English,
-      appleForms,
+      {
+        lang: LanguageISO6391Enum.English,
+        forms: appleForms,
+      },
       false,
     );
-    expect(result).toBe(appleForms[LanguageISO6391Enum.English][1]);
+    expect(result).toBe(appleForms[LanguageISO6391Enum.English]![1]);
   });
 
   it('should return singular form for Russian (count = 1) with count', () => {
     const count = 1;
-    const result = service.getPluralFormLocal(
-      count,
-      LanguageISO6391Enum.Russian,
-      appleForms,
-    );
+    const result = service.getPluralFormLocal(count, {
+      lang: LanguageISO6391Enum.Russian,
+      forms: appleForms,
+    });
     expect(result).toBe(
-      `${count} ${appleForms[LanguageISO6391Enum.Russian][0]}`,
+      `${count} ${appleForms[LanguageISO6391Enum.Russian]![0]}`,
     );
   });
 
@@ -59,10 +59,12 @@ describe('PluralizationService', () => {
     const count = 2;
     const result = service.getPluralFormLocal(
       count,
-      LanguageISO6391Enum.Russian,
-      appleForms,
+      {
+        lang: LanguageISO6391Enum.Russian,
+        forms: appleForms,
+      },
       false,
     );
-    expect(result).toBe(appleForms[LanguageISO6391Enum.Russian][1]);
+    expect(result).toBe(appleForms[LanguageISO6391Enum.Russian]![1]);
   });
 });

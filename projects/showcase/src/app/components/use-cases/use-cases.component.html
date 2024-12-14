@@ -1,0 +1,193 @@
+<h2 class="title">Use Cases</h2>
+<div class="case">
+  <h3>1. TranslatePluralPipe (*depends on ngx-translate)</h3>
+  <i>
+    <span>'APPLES' - key from {{ lang() }}.json. json file:</span>
+    <br /><br />
+    <span>{{ "{" }}</span>
+    <span>'APPLES': {{ "APPLES" | translate | json }}</span>
+    <span>{{ "}" }}</span>
+  </i>
+  <ul class="case">
+    <li class="subcase">
+      <span>{{
+        "{ { " +
+          count() +
+          " | translatePlural: { lang: '" +
+          lang() +
+          "', instant: 'APPLES'" +
+          " } } }"
+      }}</span>
+      <span
+        >// output:<b>
+          {{ count() | translatePlural: { lang: lang(), instant: "APPLES" } }}
+        </b>
+      </span>
+    </li>
+    <br />
+    <li class="subcase">
+      <span>{{
+        "{ { " +
+          count() +
+          " | translatePlural: { lang: '" +
+          lang() +
+          "', instant: 'APPLES' } : false } }"
+      }}</span>
+      <span
+        >// output:<b>
+          {{
+            count()
+              | translatePlural: { lang: lang(), instant: "APPLES" } : false
+          }}</b
+        ></span
+      >
+    </li>
+    <br />
+    <li class="subcase">
+      <span>{{
+        "{ { " + count() + " | translatePlural: { " + "instant: 'APPLES'  } } }"
+      }}</span>
+      <span
+        >// output:<b>
+          {{ count() | translatePlural: { instant: "APPLES" } }}</b
+        >
+        (used 'currentLanguage' from TranslateService)</span
+      >
+    </li>
+    <br />
+    <li class="subcase">
+      <span>{{
+        "{ { " +
+          count() +
+          " | translatePlural: { instant: 'APPLES' } : false } }"
+      }}</span>
+      <span
+        >// output:<b>
+          {{ count() | translatePlural: { instant: "APPLES" } : false }}</b
+        >
+        (used 'currentLanguage' from TranslateService)</span
+      >
+    </li>
+  </ul>
+</div>
+
+<hr />
+
+<div class="case">
+  <h3>2. PluralPipe</h3>
+  <i>
+    <span>{{ "const appleWordForms = {" }}</span>
+    <br />
+    <span>'en': {{ langWordForms()["en"] | json }},</span>
+    <br />
+    <span>'ru': {{ langWordForms()["ru"] | json }},</span>
+    <br />
+    @if (lang() !== "ru" && lang() !== "en") {
+      <span>'{{ lang() }}': {{ langWordForms()[lang()] | json }},</span>
+      <br />
+    }
+    <span>...</span>
+    <br />
+    <span>{{ "}" }}</span>
+  </i>
+  <ul class="case">
+    <li class="subcase">
+      <span>{{
+        "{ { " +
+          count() +
+          " | plural: { lang: '" +
+          lang() +
+          "', forms: appleWordForms" +
+          " } } }"
+      }}</span>
+      <span
+        >// output:
+        <b>
+          {{ count() | plural: { lang: lang(), forms: langWordForms() } }}</b
+        ></span
+      >
+    </li>
+    <br />
+    <li class="subcase">
+      <span>{{
+        "{ { " +
+          count() +
+          " | plural: { lang: '" +
+          lang() +
+          "', forms: appleWordForms } : false } }"
+      }}</span>
+      <span
+        >// output:
+        <b>
+          {{
+            count() | plural: { lang: lang(), forms: langWordForms() } : false
+          }}</b
+        ></span
+      >
+    </li>
+    <br />
+    <li class="subcase">
+      <span>{{
+          "{ { " +
+          count() +
+          " | plural: { lang: '" +
+          lang() +
+          "', forms: " + (langWordForms()[lang()] | json) +
+          " } } }"
+        }}</span>
+      <span
+      >// output:
+        <b>
+          {{ count() | plural: { lang: lang(), forms: langWordForms()[lang()]! } }}</b
+        ></span
+      >
+    </li>
+    <br />
+    <li class="subcase">
+      <span>{{
+          "{ { " +
+          count() +
+          " | plural: { lang: '" +
+          lang() +
+          "', forms: "+ (langWordForms()[lang()] | json) +" } : false } }"
+        }}</span>
+      <span
+      >// output:
+        <b>
+          {{
+            count() | plural: { lang: lang(), forms: langWordForms()[lang()]! } : false
+          }}</b
+        ></span
+      >
+    </li>
+    <br />
+    <li class="subcase">
+      <span>{{
+        "{ { " + count() + " | plural: { " + "forms: appleWordForms } } }"
+      }}</span>
+      <span
+        >// output:
+        <b>{{ count() | plural: { forms: langWordForms() } }}</b> (used 'en' by
+        default)</span
+      >
+    </li>
+    <br />
+    <li class="subcase">
+      <span>{{
+        "{ { " + count() + " | plural: { forms: appleWordForms } : false } }"
+      }}</span>
+      <span
+        >// output:
+        <b>{{ count() | plural: { forms: langWordForms() } : false }}</b> (used
+        'en' by default)</span
+      >
+    </li>
+  </ul>
+</div>
+
+<hr>
+
+<div class="case">
+  <h3>3. PluralizationService</h3>
+  <div>{{tsCode}}</div>
+</div>
