@@ -8,7 +8,3 @@ export interface ILangOptions {
 export interface IPluralOptions extends ILangOptions {
   forms: ILangWordForms | string[];
 }
-
-export interface ITranslatePluralOptions extends ILangOptions {
-  instant: string;
-}

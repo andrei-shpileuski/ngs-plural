@@ -10,61 +10,19 @@
   </i>
   <ul class="case">
     <li class="subcase">
-      <span>{{
-        "{ { " +
-          count() +
-          " | translatePlural: { lang: '" +
-          lang() +
-          "', instant: 'APPLES'" +
-          " } } }"
-      }}</span>
+      <span>{{ "{ { " + count() + " | translatePlural: 'APPLES' } }" }}</span>
       <span
-        >// output:<b>
-          {{ count() | translatePlural: { lang: lang(), instant: "APPLES" } }}
-        </b>
-      </span>
-    </li>
-    <br />
-    <li class="subcase">
-      <span>{{
-        "{ { " +
-          count() +
-          " | translatePlural: { lang: '" +
-          lang() +
-          "', instant: 'APPLES' } : false } }"
-      }}</span>
-      <span
-        >// output:<b>
-          {{
-            count()
-              | translatePlural: { lang: lang(), instant: "APPLES" } : false
-          }}</b
-        ></span
+        >// output:<b> {{ count() | translatePlural: "APPLES" }}</b> (used
+        'currentLanguage' from TranslateService)</span
       >
     </li>
     <br />
     <li class="subcase">
       <span>{{
-        "{ { " + count() + " | translatePlural: { " + "instant: 'APPLES'  } } }"
+        "{ { " + count() + " | translatePlural: 'APPLES' : false } }"
       }}</span>
       <span
-        >// output:<b>
-          {{ count() | translatePlural: { instant: "APPLES" } }}</b
-        >
-        (used 'currentLanguage' from TranslateService)</span
-      >
-    </li>
-    <br />
-    <li class="subcase">
-      <span>{{
-        "{ { " +
-          count() +
-          " | translatePlural: { instant: 'APPLES' } : false } }"
-      }}</span>
-      <span
-        >// output:<b>
-          {{ count() | translatePlural: { instant: "APPLES" } : false }}</b
-        >
+        >// output:<b> {{ count() | translatePlural: "APPLES" : false }}</b>
         (used 'currentLanguage' from TranslateService)</span
       >
     </li>
@@ -120,7 +78,10 @@
         >// output:
         <b>
           {{
-            count() | plural: { lang: lang(), forms: {'en': ['apple', 'apples']} } : false
+            count()
+              | plural
+                : { lang: lang(), forms: { en: ["apple", "apples"] } }
+                : false
           }}</b
         ></span
       >
@@ -128,34 +89,42 @@
     <br />
     <li class="subcase">
       <span>{{
-          "{ { " +
+        "{ { " +
           count() +
           " | plural: { lang: '" +
           lang() +
-          "', forms: " + (langWordForms()[lang()] | json) +
+          "', forms: " +
+          (langWordForms()[lang()] | json) +
           " } } }"
-        }}</span>
+      }}</span>
       <span
-      >// output:
+        >// output:
         <b>
-          {{ count() | plural: { lang: lang(), forms: langWordForms()[lang()]! } }}</b
+          {{
+            count() | plural: { lang: lang(), forms: langWordForms()[lang()]! }
+          }}</b
         ></span
       >
     </li>
     <br />
     <li class="subcase">
       <span>{{
-          "{ { " +
+        "{ { " +
           count() +
           " | plural: { lang: '" +
           lang() +
-          "', forms: "+ (langWordForms()[lang()] | json) +" } : false } }"
-        }}</span>
+          "', forms: " +
+          (langWordForms()[lang()] | json) +
+          " } : false } }"
+      }}</span>
       <span
-      >// output:
+        >// output:
         <b>
           {{
-            count() | plural: { lang: lang(), forms: langWordForms()[lang()]! } : false
+            count()
+              | plural
+                : { lang: lang(), forms: langWordForms()[lang()]! }
+                : false
           }}</b
         ></span
       >
@@ -185,9 +154,9 @@
   </ul>
 </div>
 
-<hr>
+<hr />
 
 <div class="case">
   <h3>3. PluralizationService</h3>
-  <div>{{tsCode}}</div>
+  <div>{{ tsCode }}</div>
 </div>

@@ -47,16 +47,13 @@ JSON ({{lang}}.json):
 HTML:
 
 ```
-{{ 0 | translatePlural: { lang: 'en', instant: 'APPLES' } }}
-// output: 0 apples
+{{ 1 | translatePlural: 'APPLES' }}
+// output: 1 apple (used 'currentLanguage' from TranslateService)
 
-{{ 0 | translatePlural: { lang: 'en', instant: 'APPLES' } : false }}
-// output: apples
+{{ 5 | translatePlural: 'APPLES' }}
+// output: 5 apples (used 'currentLanguage' from TranslateService)
 
-{{ 0 | translatePlural: { instant: 'APPLES' } }}
-// output: 0 apples (used 'currentLanguage' from TranslateService)
-
-{{ 0 | translatePlural: { instant: 'APPLES' } : false }}
+{{ 0 | translatePlural: 'APPLES' : false }}
 // output: apples (used 'currentLanguage' from TranslateService)
 ```
 

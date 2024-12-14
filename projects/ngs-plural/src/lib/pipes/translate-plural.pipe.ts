@@ -1,7 +1,6 @@
 import { Optional, Pipe, PipeTransform } from '@angular/core';
 import { PluralizationService } from '../services/injectable/pluralization.service';
 import { TranslateService } from '@ngx-translate/core';
-import { ITranslatePluralOptions } from '../models/interfaces/options.interface';
 import { LanguageISO6391Type } from '../models/types/language-iso-639-1.type';
 
 @Pipe({
@@ -22,18 +21,20 @@ export class TranslatePluralPipe implements PipeTransform {
 
   transform(
     count: number,
-    translatePluralOptions: ITranslatePluralOptions,
+    instant: string,
     needReturnCount: boolean = true,
   ): string {
     if (!this.translateService) return count.toString();
 
-    const actualLang = (translatePluralOptions.lang ||
-      this.translateService.currentLang ||
+    const actualLang = (this.translateService.currentLang ||
       this.translateService.getDefaultLang()) as LanguageISO6391Type;
-    const forms: string[] =
-      this.translateService.store.translations[actualLang][
-        translatePluralOptions.instant
-      ];
+
+    const translationsForLang =
+      this.translateService.store.translations[actualLang];
+
+    if (!translationsForLang || !translationsForLang[instant]) return instant;
+
+    const forms: string[] = translationsForLang[instant];
 
     return this.pluralizationService.getPluralFormLocal(
       count,
