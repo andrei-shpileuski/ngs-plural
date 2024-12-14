@@ -1,7 +1,7 @@
 import { ILangRulesService } from '../../models/interfaces/lang-rules-service.interface';
 
 export class RuleSlavicService implements ILangRulesService {
-  applyRule(count: number, forms: [string, string, string]): string {
+  applyRule(count: number, forms: string[]): string {
     if (count % 10 === 1 && count % 100 !== 11) {
       return forms[0];
     } else if (

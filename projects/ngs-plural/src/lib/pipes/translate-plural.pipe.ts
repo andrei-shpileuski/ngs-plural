@@ -27,16 +27,18 @@ export class TranslatePluralPipe implements PipeTransform {
   ): string {
     if (!this.translateService) return count.toString();
 
-    const forms = this.translateService.instant(translatePluralOptions.instant);
-    const currentLang = this.translateService
-      .currentLang as LanguageISO6391Type;
-    const defaultLang =
-      this.translateService.getDefaultLang() as LanguageISO6391Type;
+    const actualLang = (translatePluralOptions.lang ||
+      this.translateService.currentLang ||
+      this.translateService.getDefaultLang()) as LanguageISO6391Type;
+    const forms: string[] =
+      this.translateService.store.translations[actualLang][
+        translatePluralOptions.instant
+      ];
 
     return this.pluralizationService.getPluralFormLocal(
       count,
       {
-        lang: translatePluralOptions.lang || currentLang || defaultLang,
+        lang: actualLang,
         forms: forms,
       },
       needReturnCount,
