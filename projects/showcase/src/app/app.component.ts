@@ -1,5 +1,4 @@
 import { Component, computed, inject, OnInit, Signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { APPLES } from '../../../ngs-plural/src/lib/models/consts/test-data';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ILangWordForms } from '../../../ngs-plural/src/lib/models/interfaces/lang-word-forms.interface';
@@ -8,22 +7,15 @@ import { LanguageISO6391Enum } from '../../../ngs-plural/src/lib/models/enums/la
 import { LanguageISO6391Type } from '../../../ngs-plural/src/lib/models/types/language-iso-639-1.type';
 import { combineLatest, map, Observable, startWith } from 'rxjs';
 import { PluralizationService } from '../../../ngs-plural/src/lib/services/injectable/pluralization.service';
-import { AsyncPipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { tsCode } from './models/consts/ts-code.const';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { UseCasesComponent } from './components/use-cases/use-cases.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    TranslatePipe,
-    ReactiveFormsModule,
-    AsyncPipe,
-    UseCasesComponent,
-  ],
+  imports: [ReactiveFormsModule, UseCasesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
