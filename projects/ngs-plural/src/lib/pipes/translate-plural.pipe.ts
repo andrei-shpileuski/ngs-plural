@@ -32,9 +32,11 @@ export class TranslatePluralPipe implements PipeTransform {
     const translationsForLang =
       this.translateService.store.translations[actualLang];
 
-    if (!translationsForLang || !translationsForLang[instant]) return instant;
+    if (!translationsForLang) return instant;
 
-    const forms: string[] = translationsForLang[instant];
+    const forms: string[] = this.getNestedValue(translationsForLang, instant);
+
+    if (!forms) return instant;
 
     return this.pluralizationService.getPluralFormLocal(
       count,
@@ -44,5 +46,11 @@ export class TranslatePluralPipe implements PipeTransform {
       },
       needReturnCount,
     );
+  }
+
+  private getNestedValue(obj: any, path: string): any {
+    return path.split('.').reduce((acc, key) => {
+      return acc?.[key];
+    }, obj);
   }
 }
